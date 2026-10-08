@@ -1,0 +1,37 @@
+flowchart LR
+
+    Nano["🔵 ARDUINO NANO"]
+
+    IR1["📡 IR SENSOR 1<br/>First Gate"]
+    IR2["📡 IR SENSOR 2<br/>Second Gate"]
+
+    LCD["🖥️ 16×2 I2C LCD"]
+
+    Green["🟢 GREEN LED<br/>Normal"]
+    Yellow["🟡 YELLOW LED<br/>Caution"]
+    Red["🔴 RED LED<br/>Overspeed"]
+
+    Buzzer["🔊 BUZZER"]
+
+    IR1 -->|"OUT → D2"| Nano
+    IR2 -->|"OUT → D3"| Nano
+
+    Nano -->|"A4 → SDA<br/>A5 → SCL"| LCD
+
+    Nano -->|"D9"| Green
+    Nano -->|"D10"| Red
+    Nano -->|"D11"| Yellow
+
+    Nano -->|"D8"| Buzzer
+
+    IR1 -. "VCC → 5V" .-> Nano
+    IR2 -. "VCC → 5V" .-> Nano
+    LCD -. "VCC → 5V" .-> Nano
+
+    IR1 -. "GND" .-> Nano
+    IR2 -. "GND" .-> Nano
+    LCD -. "GND" .-> Nano
+    Green -. "GND" .-> Nano
+    Yellow -. "GND" .-> Nano
+    Red -. "GND" .-> Nano
+    Buzzer -. "GND" .-> Nano
